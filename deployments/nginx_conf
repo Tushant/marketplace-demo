@@ -1,0 +1,12 @@
+server {
+   listen 80; 
+    server_name SERVER_DOMAIN_OR_IP; 
+    location = /favicon.ico { access_log off; log_not_found off; } 
+    location /static/ { 
+        root /home/test_project; 
+    } 
+    location / { 
+        include proxy_params; 
+        proxy_pass http://unix:/home/test_project/test_project.soc; 
+    } 
+}

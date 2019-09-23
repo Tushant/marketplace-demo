@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %} Homepage {% endblock title %}
+
+{% block body %}
+<div class="row">
+    <div class="col-4">
+    {% for category in categories %}
+        <p><a href="{% url 'products:products-with-category' category_id=category.id%}">{{ category.title }}</a></p>
+    {% endfor %}
+    </div>
+    <div class="col-8">
+    {% for product in products %}
+        <a href={{product.get_absolute_url}}>{{ product.title }}</a>
+        <p>{{ product.price }}</p>
+        <p>{{ product.category }}</p>
+    {% endfor %}
+    </div>
+</div>
+{% endblock body %}
